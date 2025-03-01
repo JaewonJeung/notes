@@ -8,3 +8,5 @@
 - Review How to approach a system design and take notes to refer to 
 - Work through System design questions with solutions
 - Work through Object-oriented design questions with solutions
+
+- https://github.com/madd86/awesome-system-design if needed
