@@ -3,7 +3,7 @@
 	- Characterized by amplitudes, and these are actual physical components
 - Amplitude
 	- You can sort of think of it as probability (but it doesn't go from 0 to 1 since it's in the form of $a+bi$, using imaginary numbers). But a constraint is made on what the amplitudes can be so that we can represent them from 0 to 1 probability
-	- Amplitude of a single qubit can be represented as $\psi = (1/\sqrt{2}|0\rangle + (1/\sqrt{2}|1\rangle$   
+	- Amplitude of a single qubit can be represented as $\psi = (1/\sqrt{2}|0\rangle + (1/\sqrt{2}|1\rangle$    
 		- This means that qubit psi has two states 0 and 1 with amplitudes of $1/ \sqrt{2}$ each
 		- Getting the modulus (hypotenuse of complex number plain) of it, you get the actual probability. In this case, 0 and 1 each have 1/2 probability of appearing for this qubit
 	- A group of qubits, say 4 qubits can be represented like $\alpha_0|0000\rangle$  + $\alpha_1|0001\rangle$  + $\alpha_2|0010\rangle$  ... $\alpha_{15}|1111\rangle$ that is, the probability of getting 0000, '' for 0001, and so forth

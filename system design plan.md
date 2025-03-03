@@ -10,3 +10,14 @@
 - Work through Object-oriented design questions with solutions
 
 - https://github.com/madd86/awesome-system-design if needed
+
+# continue
+https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#consistency-patterns
+
+## donnemartin
+- [[CAP]] Theorem
+    - What is the context of this theorem and what does each three mean?
+    - Which one of those is necessary and why?
+    - When would you use each of the two combinations?
+    - Why can't we achieve all three?
+- 
