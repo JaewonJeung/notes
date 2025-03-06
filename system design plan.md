@@ -14,10 +14,22 @@
 # continue
 https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#consistency-patterns
 
+Ask WHYS!!
+
 ## donnemartin
 - [[CAP]] Theorem
     - What is the context of this theorem and what does each three mean?
     - Which one of those is necessary and why?
     - When would you use each of the two combinations?
     - Why can't we achieve all three?
+    - What are the three consistency patterns? Why would you use each and why wouldn't you?
+    - What are the two availability patterns? 
+    - Describe how you would calculate the availbility of two components serving in parallel, each with 99.9% avail
+    - TODO review the consistency techniques and see if they fit in the place
+    - Case study: How does s3 achieve so many 9s?
+    - Case study: How does Google docs handle concurrency?
+    - Case study: How does MMO games handle concurrency?
 - 
+
+# Object design
+https://python-patterns.guide/
