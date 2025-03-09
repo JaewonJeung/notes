@@ -14,8 +14,6 @@
 # continue
 https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#consistency-patterns
 
-Ask WHYS!!
-
 ## donnemartin
 - [[CAP]] Theorem
     - What is the context of this theorem and what does each three mean?
@@ -28,8 +26,11 @@ Ask WHYS!!
     - TODO review the consistency techniques and see if they fit in the place
     - Case study: How does s3 achieve so many 9s?
     - Case study: How does Google docs handle concurrency?
-    - Case study: How does MMO games handle concurrency?
-- 
+    - Case study: How do MMO games handle concurrency?
+- [[DNS]]
+    - Describe a scenario why you would want a latency-based routing
+    - Describe a scenario why you would want a geolocation-based routing
+    - TODO: attacks
 
 # Object design
-https://python-patterns.guide/
+https://python-patterns.guide
