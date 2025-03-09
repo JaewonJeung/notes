@@ -11,9 +11,6 @@
 
 - https://github.com/madd86/awesome-system-design if needed
 
-# continue
-https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#consistency-patterns
-
 ## donnemartin
 - [[CAP]] Theorem
     - What is the context of this theorem and what does each three mean?
