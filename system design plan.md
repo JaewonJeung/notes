@@ -32,7 +32,17 @@
     - Describe a scenario why you would want a latency-based routing
     - Describe a scenario why you would want a geolocation-based routing
     - TODO: attacks
-- 
+- [[CDN]]
+    - What is a CDN and why is it important in modern system design?
+    - Explain the caching strategies used by CDNs
+    - What are some common challenges in designing a CDN?
+    - How does a CDN handle dynamic content differently from static content?
+    - How do CDNs ensure consistency and freshness of cached content?
+    - What are the trade-offs between global versus regional CDN deployments?
+    - How do CDNs handle load balancing and failover?
+    - What metrics are used to evaluate CDN performance?
+    - How can you integrate a CDN into an existing web architecture?
+    - What is the role of DNS in CDN routing?
 
 # Object design
 https://python-patterns.guide
