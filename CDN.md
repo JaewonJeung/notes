@@ -1,6 +1,7 @@
 # CDN
 
 Distributing service spatially relative to end users
+https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
 
 ## Benefits of CDN
 - Availability and performance

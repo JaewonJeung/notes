@@ -43,6 +43,18 @@
     - What metrics are used to evaluate CDN performance?
     - How can you integrate a CDN into an existing web architecture?
     - What is the role of DNS in CDN routing?
+- [[Load balancer]]
+    - Describe different load balancing algorithms and their use cases.
+    - What are the differences between Layer 4 and Layer 7 load balancing?
+    - How do load balancers ensure high availability and handle failover?
+    - What role does DNS play in load balancing?
+    - How do load balancers implement session persistence (sticky sessions)?
+    - What are the trade-offs between hardware and software load balancers?
+    - How can security be integrated into a load balancing setup?
+    - How do load balancers scale to handle increasing traffic?
+    - What are common methods to monitor and troubleshoot load balancers?
+- [[Application layer]]
+    - 
 
 ## HI
 ### Intro
@@ -62,114 +74,44 @@
     Not recognizing common patterns and best practices.
 
 ### Delivery framework (sequence of steps for focused delivery)
-1. `Requirements` (5 min)
-    - `Functional` ("Clients should be able to...")
-        - Ask questions about the features as if you were talking to a client or PM
-        - ! Identify and prioritize the top 3
-    - `Non-functional` (System qualities. "The system should be...")
-        - "System should be highly available", "The system should be able to scale to support 100M+ DAUs", "The system should be low latency, rendering feeds in under 200ms"
-        - ! Important to have requirements in the context of the system and quantify if possible
-        - Identify top 3 - 5 things among:
-        - `PACELC Theorem`: Consistency vs Availability
-        - `Environment Constraints`: System with limited memory or limited bandwidth (e.g. streaming video on 3G)?
-        - `Scalability`: All systems should scale. But more specifically stuff like bursty traffic at a specific time/day? Does your system need to scale reads or writes more?
-        - `Latency`: Specifically consider any requests that require meaningful computation. For example, low latency search when designing Yelp.
-        - `Durability`: Data loss tolerance? social network vs. banking system 
-        - `Compliance/Security`: Regulatory requirements. Data loss, access control, etc.
-    - `Capacity` (Calculation/estimation)
-        - Often unnecessary unless it's crucial for non-functional requirement
-        - ! Tell them you'll skip calculation and do it while designing if necessary
-        - https://www.hellointerview.com/blog/mastering-estimation
-2. `Core entities` (2 min)
-    - Identify and list the core entities of your system. Nouns and verbs. Small list.
-    - Twitter example: "User" "Tweet" "Follow"
-    - ! Think of the non-overlapping actors and what are necessary for the functional requirements
-3. `API` (5 min)
-    - Based on the functional req, define the contract between users and the system. Guides the high-level design
-    - types
-        - `REST API`: Basic CRUD. Bias towards this. Only nouns. No verbs
-        - `GraphQL`: Use only if it's imperative for the client to fetch exactly the data they need (no over- or under- fetching)
-        - `Wire protocol`: websockets, raw TCP
-    - REST example:
-        - POST /v1/tweets
-            body: {
-                "text": str
-            }
-          GET /v1/tweets/:tweetId -> Tweet
-          POST /v1/follows/:userId
-          GET /v1/feeds -> Tweet[]
-        - Notice there's no userid in the tweet POST since it'll be identified using authentication token in req header
-        - fyi, those things after : is called path parameter 
-4. `Data flow` (Optional, 5 min)
-    - If we're talking about data processing systems with many steps, helpful to list of sequence of actions/processes
-    - Web crawler example:
-    - For a web crawler, this might look like:
-        1. Fetch seed URLs
-        2. Parse HTML
-        3. Extract URLs
-        4. Store data
-        5. Repeat
-5. `High level diagramming` (10 - 15min) 
-    - ! Primary goal: Satisfy functional requirements by satisfying the designed API
-    - Don't overthink/over-complicate since you need to at least complete the system. Go one by one of the API endpoints
-    - ! Be explicit about data flows. Starting from request and ending with response. When request reaches DB, doc relevant col/fields for the entity (Not too detailed. Wastes time.)
-      - That is, for POST tweet, next to the DB, you can jot down
-        - Tweet
-          - id
-          - userid
-          - text
-          - media: s3uri[]
-    - Take notes of potential areas of complexity for the deep dives section
-    - example diagram: ![alt text](image.png)
-6. `Deep Dives` 
-    - ! Harden design
-        - Meeting non-functional req (go back and check each point)
-        - Address edge case
-        - Identifying & addressing issues & bottlenecks
-  
+[[Delivery framework]]
+
 ### Core Concepts
-#### Scaling
-- Horizontal scaling
-    - Note that vertical scaling is a lot less complex and machines can vertically scale to a surprising degree
-- ! Don't leap too fast into horizontal scaling. Check if it's necessary
-- ! If you do choose horizontal scaling, think about the implication on the rest of the system
-- "Consistent hashing"
+[[HI core concepts]]
+Scaling
+- What is horizontal scaling and how does it differ from vertical scaling?
+- Why should you avoid jumping into horizontal scaling too quickly?
+- What system-wide implications must be considered when implementing horizontal scaling?
 
-#### CAP
-- AP should be the default choice. Only need strong consistency in systems where reading stale data is unacceptable
-    - E.g. for strong consistency: inventory mgmt systems, booking systems, banking systems
-- ! You can have more than one consistency models in your system. That is, you can provide product description with AP but CP inventory counts to prevent overselling
+CAP Theorem
+- What does the CAP theorem state, and why is AP (Availability and Partition tolerance) often chosen as the default?
+- In what scenarios is strong consistency (CP) critical?
+- How can a system incorporate multiple consistency models to meet different requirements?
 
-#### Locking
-- Employing locks considerations
-    - Granularity: Fine-grained locks for performance
-    - Duration: Short locks as possible
-    - Bypassing lock: Optimistic concurrent strategy. Locking only if necessary by employing a version manifest file and checking the read record version and depending on  
+Locking
+- What factors should be considered when employing locks in a system?
+- How does lock granularity impact system performance?
+- Why is it beneficial to keep locks as short as possible?
+- What is an optimistic concurrency strategy and when might you bypass traditional locking?
 
-#### Indexing
-- Work up front so that reads can be fast
-- Specialized indexing
-    - Geospatial: Location services
-    - Vector DB: indexing high dimensional data (similar images, similar docs)
-    - Full-text index: indexing text data. Searching for docs or searching for tweets
-- ElasticSearch (a secondary index solution)
-    - Supports full-text indexes, geospatial, and vector
-    - Uses "Change Data Capture" to index DB and to listen on incoming changes coming from the DB
-    - But this introduces a new source of latency, but it may be okay to be inconsistent 
+Indexing
+- Why is it important to invest in indexing upfront for fast reads?
+- What are some specialized indexing techniques, and for what use cases are they typically applied?
+- How does ElasticSearch function as a secondary index solution, and what trade-off does it introduce?
 
-#### Communication Protocols
-- `HTTPS`: Stateless. Therefore you can scale the API horizontally by placing it behind a LB. Services SHOULDN'T assume state of the client
-- `Long polling`; `Server Sent Events`: Near real-time updates from server to clients. Simplicity of HTTP and real-time update of websocket
-- `websockets`: realtime bidirectional communication
-    - Maintaining a lot of open connections like this can strain the backend. 
-    - A common pattern for this instance is to insert a message broker between the client and the server. This way, connections are maintained by the broker, and the broker and communicate with the backend services
-- ! Statefulness is major source of complexity. Relegate the state to a message broker or the DB. This way, your service can scale horizontally and still maintaining stateful communication with clients
+Communication Protocols
+- How does HTTPS support horizontal scaling of APIs?
+- What are the benefits and use cases for long polling and server-sent events?
+- How do websockets facilitate real-time bidirectional communication, and what challenges do they present?
+- Why is it crucial to relegate state management to message brokers or databases when using stateful protocols?
 
-#### Security
-- Auth: "API gateway will handle auth and authorization"
-- 
+Security
+- What role does an API gateway play in handling authentication and authorization?
 
-#### Monitoring
+Monitoring
+- What metrics should be monitored at the infrastructure level?
+- What service-level indicators are important for assessing the health of a service?
+- Which application-level metrics help determine if an application is fulfilling its intended purpose?
 
 # Object design
 https://python-patterns.guide
