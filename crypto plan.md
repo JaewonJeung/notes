@@ -7,6 +7,13 @@
 ## PQC
 ### G
 - 24/03/11 https://bughunters.google.com/blog/5108747984306176/google-s-threat-model-for-post-quantum-cryptography
+    - [[Google threat model PQC]]
+    - Recommendation is to use classical/PQC in hybrid fashion so that the attacker has to break both
+    - Uses cases: 
+        - Encrypt in transit. ephemeral PQC for init key agreement
+        - PKI. Need community consensus. Currently expensive deployment due to signature size
+        - Firmware sign. Devices with long life-span need urgent replacement
+        - Software sign. Hybrid approach
 - 24/05/21 https://bughunters.google.com/blog/5266882047639552/why-hybrid-deployments-are-key-to-secure-pqc-migration
 - 24/05/23 https://blog.chromium.org/2024/05/advancing-our-amazing-bet-on-asymmetric.html
 - 24/06/24 https://bughunters.google.com/blog/6182336647790592/cryptographic-agility-and-key-rotation

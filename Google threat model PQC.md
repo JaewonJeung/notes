@@ -1,0 +1,50 @@
+[https://bughunters.google.com/blog/5108747984306176/google-s-threat-model-for-post-quantum-cryptography](https://bughunters.google.com/blog/5108747984306176/google-s-threat-model-for-post-quantum-cryptography)
+
+- store-now-decrypt-later attack is the main motivator for fast transformation
+- Two main quant algos
+  - Shor's algo
+  - Grover's search
+- 4 crypto categories
+  - symm
+    - Not affected that much. Grover's algo seems to be infeasible
+      - Cites 2017 paper, "Reassessing Grover's Algorithm" which is not part of wiki
+  - asymm & key agreement
+    - Impacted by store and decrypt due to Shor's algo
+  - DS
+    - Impacted by Shor's algo but not necessarily store now and decrypt later
+  - misc
+    - Many privacy preserving techniques will be impacted 
+    - e.g. blind signatures, ORPR
+- PQC schema in [[post quantum crypto]]
+- Hybrid approach
+  - The PQC algos are still less mature than classical crypto
+    - So the recommendation is to use them in a hybrid fashion so that the attacker would have to break both
+- Use cases and recommendations
+  - Encryption in transit
+    - TLS, SSH, RCS, ALTS, etc. 
+    - Store now and decrypt later is the main threat. Therefore **urgent** timeline
+    - ephemeral PQC key for the initial key agreement
+      - ? Hmm need to look into how key agreement is done irl for TLS
+    - Long term PQC key would fall under PKI (pub/priv CA) and need community consensus 
+    - Recommendation: Kyber768 for key agreement and X25519 or P256
+  - Firmware signatures
+    - Used to secure the root of the secure boot trust chain
+    - The pub keys burned into hardware
+    - Changing the signature scheme impossible
+    - ? For devices with long life-span, we end up with something similar to store-now-decrypt-later. **Urgent**
+    - Recommendation: SPHINCS+
+  - Software signatures
+    - Used to guarantee secure boot and make deployments resistant to tampering with binaries and source code
+    - Recommendation: Dilithium3 in hybrid with ECDSA/EdDSA/RSA or SPHINCS+
+  - PKI
+    - A single Dilithium3 signature + public key is larger than 5kB
+    - ? Makes PKI deployment very expensive
+    - Performance penalty
+    - No clear recommendation 
+  - Tokens
+    - ? JWT that use symmetric crypto or stateful techniques are not affected by quantum algos
+    - For asymmetric tokens, the main difficulty is the size constraint since Dilithium3 signature would not fit the cookie size req of 4096B
+    - Recommendation: Use stateful tokens, no clear crypto recommendation
+  - Other
+- Threat actors
+  - Nation state might try to put backdoor on NIST releases like what happened with Dual-EC-DRBG. This would be mitigated by making it a public competition. But also in the meantime, if the crypto deployments are in hybrid fashion, being able to break PQC without a quantum computer would still be unavailable, and during that time, the public would have several years to discover any problem 
