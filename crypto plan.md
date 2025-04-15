@@ -13,13 +13,18 @@
 - 24/08/13 https://security.googleblog.com/2024/08/post-quantum-cryptography-standards.html
 - 24/08/19 https://bughunters.google.com/blog/6038863069184000/formally-verified-post-quantum-algorithms
 
-### Cloudflare 
-- 21/11/08 https://blog.cloudflare.com/sizing-up-post-quantum-signatures/
-
 ### M
 - 24/05/22 https://engineering.fb.com/2024/05/22/security/post-quantum-readiness-tls-pqr-meta/
 - 24/08/28 https://engineering.fb.com/2024/08/28/security/post-quantum-cryptography-meta/
 - 24/11/12 https://engineering.fb.com/2024/11/12/security/how-meta-built-large-scale-cryptographic-monitoring/
+
+### AMZN
+- 24/12/05 https://aws.amazon.com/blogs/security/aws-post-quantum-cryptography-migration-plan/
+- 25/04/07 https://aws.amazon.com/blogs/security/ml-kem-post-quantum-tls-now-supported-in-aws-kms-acm-and-secrets-manager/
+
+### Cloudflare 
+- 21/11/08 https://blog.cloudflare.com/sizing-up-post-quantum-signatures/
+- 25/03/21 https://blog.cloudflare.com/lattice-crypto-primer/
 
 ### Signal
 - 23/09/19 https://signal.org/blog/pqxdh/

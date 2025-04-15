@@ -33,8 +33,8 @@
             body: {
                 "text": str
             }
-          GET /v1/tweets/:tweetId -> Tweet
-          POST /v1/follows/:userId
+          GET /v1/tweets/{tweetId} -> Tweet
+          POST /v1/follows/{userId}
           GET /v1/feeds -> Tweet[]
         - Notice there's no userid in the tweet POST since it'll be identified using authentication token in req header
         - fyi, those things after : is called path parameter 

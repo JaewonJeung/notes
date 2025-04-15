@@ -14,7 +14,7 @@
 
 - https://github.com/madd86/awesome-system-design if needed
 
-## donnemartin
+## donnemartin + HI
 - [[CAP]] Theorem
     - What is the context of this theorem and what does each three mean?
     - Which one of those is necessary and why?
@@ -55,6 +55,9 @@
     - What are common methods to monitor and troubleshoot load balancers?
 - [[Application layer]]
     - 
+- [[Storage]]
+- [[API Gateway]]
+- [[Queue]]
 
 ## HI
 ### Intro
