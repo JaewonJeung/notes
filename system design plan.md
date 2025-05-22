@@ -136,3 +136,7 @@ Monitoring
 
 # Object design
 https://python-patterns.guide
+
+# Pratice problems
+- [[design bitly]]
+- 
