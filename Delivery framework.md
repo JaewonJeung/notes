@@ -9,6 +9,10 @@
         - ! Important to have requirements in the context of the system and quantify if possible
         - Identify top 3 - 5 things among:
         - `PACELC Theorem`: Consistency vs Availability
+            - AP should be the default choice. Only need strong consistency in systems where reading stale data is unacceptable
+            - E.g. for strong consistency: inventory mgmt systems, booking systems, banking systems
+            - ! You can have more than one consistency models in your system. That is, you can provide product description with AP but CP inventory counts to prevent overselling
+            - Remember, you prioritize consistency over availability only if every read must receive the most recent write; otherwise, the system will break. For example, with a stock trading app, if a user buys a share of APPL in Germany and then another user immediately tries to buy a share of APPL in the US, you need to be sure that the first transaction has been replicated to the US before you can proceed. However, for a file storage system like Dropbox, it's okay if a user in Germany uploads a file and a user in the US can't see it for a few seconds.
         - `Environment Constraints`: System with limited memory or limited bandwidth (e.g. streaming video on 3G)?
         - `Scalability`: All systems should scale. But more specifically stuff like bursty traffic at a specific time/day? Does your system need to scale reads or writes more?
         - `Latency`: Specifically consider any requests that require meaningful computation. For example, low latency search when designing Yelp.
