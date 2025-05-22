@@ -5,7 +5,7 @@
     - Note that vertical scaling is a lot less complex and machines can vertically scale to a surprising degree
 - ! Don't leap too fast into horizontal scaling. Check if it's necessary
 - ! If you do choose horizontal scaling, think about the implication on the rest of the system
-- "Consistent hashing"
+- "Consistent hashing" to determine which host gets the request
 
 #### CAP
 - AP should be the default choice. Only need strong consistency in systems where reading stale data is unacceptable

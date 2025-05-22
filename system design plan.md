@@ -14,7 +14,7 @@
 
 - https://github.com/madd86/awesome-system-design if needed
 
-## donnemartin + HI
+## donnemartin + HI Key Tech
 - [[CAP]] Theorem
     - What is the context of this theorem and what does each three mean?
     - Which one of those is necessary and why?
@@ -44,8 +44,9 @@
     - How can you integrate a CDN into an existing web architecture?
     - What is the role of DNS in CDN routing?
 - [[Load balancer]]
+    - In front of what do you need LBs? How do you represent this in interviews?
     - Describe different load balancing algorithms and their use cases.
-    - What are the differences between Layer 4 and Layer 7 load balancing?
+    - What are the differences between Layer 4 and Layer 7 load balancing? In what scenarios are each useful?
     - How do load balancers ensure high availability and handle failover?
     - What role does DNS play in load balancing?
     - How do load balancers implement session persistence (sticky sessions)?
@@ -57,7 +58,24 @@
     - 
 - [[Storage]]
 - [[API Gateway]]
+    - What are some things API Gateways can handle?
 - [[Queue]]
+    - Two purposes of using queues?
+    - When not to use queues?
+- Database
+    - [[Relational Database]]
+        - What is SQL joins for and what's the downside?
+        - What are indexes for and what's so nice about RDB indexing?
+        - Explain RDBMS "transactions"
+    - [[NoSQL Database]]
+        - When might you choose a NoSQL database for your project?
+        - What is an important caveat to remember when comparing NoSQL and Relational Database capabilities?
+        - Describe the consistency models available in NoSQL databases
+- Streams / Event Sourcing
+- [[Distributed lock]]
+    - Why can't we just use ACID property of a DB?
+    - Some examples of scenarios where we need distributed lock
+- [[Distributed cache]]
 
 ## HI
 ### Intro
@@ -79,7 +97,7 @@
 ### Delivery framework (sequence of steps for focused delivery)
 [[Delivery framework]]
 
-### Core Concepts
+### Core Concepts Quiz
 [[HI core concepts]]
 Scaling
 - What is horizontal scaling and how does it differ from vertical scaling?

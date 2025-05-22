@@ -17,7 +17,7 @@ https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
 
 ## Answers
 1. What is a CDN and why is it important in modern system design?
-A CDN (Content Delivery Network) is a distributed network of servers that cache and deliver web content to users based on their geographic location. It minimizes latency, reduces load on origin servers, and improves overall reliability and scalability of web applications.
+A CDN (Content Delivery Network) is a distributed network of servers that cache and deliver web content (often time in conjuntions with blob storages) to users based on their geographic location. It minimizes latency, reduces load on origin servers, and improves overall reliability and scalability of web applications.
 
 2. Explain the caching strategies used by CDNs.
 CDNs typically use strategies such as Time-to-Live (TTL) to determine how long content remains cached, cache invalidation or purging to refresh outdated content, hierarchical caching with multiple layers (edge, regional, and central caches), and cache replacement policies like LRU (Least Recently Used) or LFU (Least Frequently Used) to optimize storage.

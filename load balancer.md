@@ -19,6 +19,11 @@
     - This means that we need more than 1 LB nodes. Increases complexities
 
 ## Answers
+0. In front of what do you need LBs? How do you represent this in interviews?
+In front of every service that processes same requests with multiple machines.
+This can be redundant in interviews. 
+Either you omit LB from the design and just mention that the service is horizontally scaled, or put LB right after API Gateway
+
 1. What is a load balancer and why is it essential in modern distributed systems?
 A load balancer distributes incoming network traffic across multiple backend servers. This distribution helps ensure that no single server becomes a bottleneck, enhancing system reliability, performance, and scalability.
 
@@ -28,9 +33,9 @@ A load balancer distributes incoming network traffic across multiple backend ser
 - IP Hash: Routes requests based on client IP, which can be useful for session persistence.
 - Weighted Round Robin/Least Connections: Assigns different weights to servers based on capacity, directing more traffic to more powerful servers.
 
-3. What are the differences between Layer 4 and Layer 7 load balancing?
-- Layer 4 (Transport Layer): Operates at the TCP/UDP level and makes routing decisions based on IP address and port numbers without inspecting the actual content of the traffic.
-- Layer 7 (Application Layer): Operates at the HTTP/HTTPS level and can make routing decisions based on content, headers, cookies, or URLs, which allows for more granular control.
+3. What are the differences between Layer 4 and Layer 7 load balancing? When to use each?
+- Layer 4 (Transport Layer): Operates at the TCP/UDP level and makes routing decisions based on IP address and port numbers without inspecting the actual content of the traffic. Useful for persistent connections like websockets 
+- Layer 7 (Application Layer): Operates at the HTTP/HTTPS level and can make routing decisions based on content, headers, cookies, or URLs, which allows for more granular control. Everything except persistent connections
 
 4. How do load balancers ensure high availability and handle failover?
 They regularly perform health checks on backend servers to determine their availability. If a server fails, the load balancer automatically reroutes traffic to healthy servers using strategies like active-passive or active-active configurations, ensuring continuous service.
