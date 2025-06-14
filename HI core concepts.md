@@ -11,6 +11,12 @@
 - AP should be the default choice. Only need strong consistency in systems where reading stale data is unacceptable
     - E.g. for strong consistency: inventory mgmt systems, booking systems, banking systems
 - ! You can have more than one consistency models in your system. That is, you can provide product description with AP but CP inventory counts to prevent overselling
+- Practically, CP systems would need some kind of a consensus protocol like paxos to agree on the data (e.g. zookeeper). For DB choice, an ACID db with atomic transaction capability would be nice
+- Meanwhile, AP systems can use eventual consistency protocols to agree on the data 
+- more info [[cap]]
+- ! dydb now supports both AP (default) and CP (with transactions)
+  - it also supports "DAX" which is a cache layer in between
+  - also supports streams via [[Change data capture (CDC)]]
 
 #### Locking
 - Employing locks considerations

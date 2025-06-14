@@ -62,6 +62,7 @@
 - [[Queue]]
     - Two purposes of using queues?
     - When not to use queues?
+- [[Kafka]]
 - Database
     - [[Relational Database]]
         - What is SQL joins for and what's the downside?
@@ -138,5 +139,14 @@ Monitoring
 https://python-patterns.guide
 
 # Pratice problems
-- [[design bitly]]
-- 
+- [[design bitly]]: url shortener
+- [[design gopuff]]: location two-stage arch, CP, ACID DB speedups+reliability
+    - ! postgres are single instance nodes. Horizontal scaling is achieved by sharding & read-only replica
+- [[design ticketmaster]]: transaction, distributed lock w/ TTL, payment processing, DB speedups, horizontal scaling, scalable string search w/ [[Change data capture (CDC)]]
+    - ! It would still be good idea to have the transaction system in case the dist lock goes down and we still need to prevent double booking
+    - ! Actually write down what the dist lock data would look like
+    - ! Remember to mention horizontal scaling the actual services in additiono to the DB as well :)
+- [[design facebook news feed]]: infinite scroll, fan-out problem, async workers, hot key problem
+    - ! adjusting the prouduct in outlier instances like a user with 100k follows. FB limits num of friends to 5000
+    - ! shift in thinking from computing the feed resulting on WRITE than READ
+- [[design leetcode]]: isolation/security, leaderboard, long-running task, SQS usage

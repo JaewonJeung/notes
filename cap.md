@@ -2,15 +2,19 @@
 
 ## Definition
 In a distributed computing system, we can guarantee only two of the followings:
-- Consistency - Every node has the latest data, so every read op receives the most recent write 
+- Consistency - Every node has the latest data, so every read op receives the most recent quorum-agreed write. Check #CP
 - Availablity - Every request recieves _a_ response, whether it is the latest data or not
 - Partition tolerance - Store data in a distributed manner so that the system as a whole continues to operate even with arbitrary partitioning due to intra-system comm issue (e.g. network or node failure). You get to decide what to do when a partition does occur
     - ! Partion tolerance is necessary since network or node failures are bound to happen, and we don't wanna completely lose the data
     - This is almost the whole reason why we have distributed systems
 
 ## CP 
-- Waiting for a response from the partitioned node might result in a timeout error
-- CP is a good choice if your business needs require atomic reads and writes. Like Google Docs, but even Google Docs is moving to AP with "conflict resolution" as a way to solve consistency issue
+- CP is a good choice if your business needs require atomic reads and writes. For cases where it would be catastrophic to the business if the user saw inconsistent data
+    - Ticket `Booking` Systems
+    - E-commerce `inventory`
+    - `Financial` systems
+- If a partition does occur, the system may halt writes if the distributed system quorum is not met
+- It may still allow reads because we know the quorum has been successful up to point right before the partition
 
 ## AP 
 - Responses return the most readily available version of the data available on any node, which might not be the latest. Writes might take some time to propagate when the partition is resolved.

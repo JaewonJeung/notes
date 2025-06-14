@@ -15,10 +15,32 @@
     - Say for each user, we want to show a list of posts from all the people people they follow. It requires a lot of joins. 
     - We can instead run the query once, store the results in a dist cache and retrieve the results
 
-## Cache write strategy
-- Write through
-    - Writing data to both the cache and the DB. Ensures consistency but slower write ops
-- Write around
+## Cache strategies
+- `Cache aside`
+    - No connections between cache and DB. App is the middleman
+    - Flow
+        1. App reaches out to cache
+        2. If miss returned, app fetches from DB
+        3. App updates cache
+    - For read-heavy workflows 
+    - Write is done through DB directly with TTL in cache (to ensure the data is fresh enough) and then "lazy load"
+    - Can be combined with write around
+- `Read through`
+    - Cache sits in the middle. App <-> cache <-> DB
+    - In case of cache miss, the cache is the one pulling data from DB
+    - For read-heavy workflows
+- `Write through`
+    - Cache sits in the middle. App <-> cache <-> DB
+    - Writing data to the cache which in turn to the DB (SYNC)
+    - Ensures data consistency btw cache and DB but slower write ops
+    - Paired with read-through
+    - Can lead to cache pollution
+- `Write around`
     - Write data only on DB. Minimizes cache pollution (some data may do a lot of writes but not be immediately read, and in this case, write-through will push out more important read-heavy cache) but increase data fetch time
-- Write-back
-    - Write data to cache and async write from cache to DB. Fast write and read but potential data loss if cache is not saved to disk
+    - Useful for lotsa write 
+    - Can be combined with cache aside
+- `Write-back`
+    - Cache sits in the middle. App <-> cache <-> DB
+    - Write data to cache, cache ACKs, and ASYNC write from cache to DB. 
+    - Fast write (since app can do whatever after getting ack from cache) and read but potential data loss if cache is not saved to disk
+    - 

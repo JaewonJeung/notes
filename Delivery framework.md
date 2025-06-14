@@ -5,17 +5,16 @@
         - Ask questions about the features as if you were talking to a client or PM
         - ! Identify and prioritize the top 3
     - `Non-functional` (System qualities. "The system should be...")
-        - "System should be highly available", "The system should be able to scale to support 100M+ DAUs", "The system should be low latency, rendering feeds in under 200ms"
         - ! Important to have requirements in the context of the system and quantify if possible
+            - "System should be highly available", "The system should be able to scale to support 100M+ DAUs", "The system should be low latency, rendering feeds in under 200ms"
         - Identify top 3 - 5 things among:
         - `PACELC Theorem`: Consistency vs Availability
+            - [[cap]]
             - AP should be the default choice. Only need strong consistency in systems where reading stale data is unacceptable
-            - E.g. for strong consistency: inventory mgmt systems, booking systems, banking systems
+                - E.g. for strong consistency: inventory mgmt systems, booking systems, banking systems
             - ! You can have more than one consistency models in your system. That is, you can provide product description with AP but CP inventory counts to prevent overselling
-            - Remember, you prioritize consistency over availability only if every read must receive the most recent write; otherwise, the system will break. For example, with a stock trading app, if a user buys a share of APPL in Germany and then another user immediately tries to buy a share of APPL in the US, you need to be sure that the first transaction has been replicated to the US before you can proceed. However, for a file storage system like Dropbox, it's okay if a user in Germany uploads a file and a user in the US can't see it for a few seconds.
+        - `Read vs write ratio` and read/write quirks (e.g. bursts)
         - `Environment Constraints`: System with limited memory or limited bandwidth (e.g. streaming video on 3G)?
-        - `Scalability`: All systems should scale. But more specifically stuff like bursty traffic at a specific time/day? Does your system need to scale reads or writes more?
-        - `Latency`: Specifically consider any requests that require meaningful computation. For example, low latency search when designing Yelp.
         - `Durability`: Data loss tolerance? social network vs. banking system 
         - `Compliance/Security`: Regulatory requirements. Data loss, access control, etc.
     - `Capacity` (Calculation/estimation)

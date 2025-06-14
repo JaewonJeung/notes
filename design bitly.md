@@ -59,15 +59,16 @@ analytics cache (redis might be an overkill):
 - …
 
 
-Things to note in this problem
+# Things to note 
 - Redirect types (301 vs 302)
 - Asymmetric operation (more read vs write)
     - scaling primary server separating read and write ops. Scaling independently
 - HDD vs SSD vs Memcache speed difference
-    - 
-    Memory access time: ~100 nanoseconds (0.0001 ms)
-    SSD access time: ~0.1 milliseconds
-    HDD access time: ~10 milliseconds
+    - https://gist.github.com/jboner/2841832
+    - Mem 1MB access = 0.25 ms 
+    - memory speed x4 = ssd
+    - ssd speed x20 = hdd
+    - RTT within same Datacenter = 0.5 ms
 - Ensuring unique url
 
 https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly
