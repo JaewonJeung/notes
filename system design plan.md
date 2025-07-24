@@ -142,6 +142,7 @@ https://python-patterns.guide
 - [[Real-time updates]]
 - [[Dealing with contention]]
 - [[scaling reads]]
+- [[scaling writes]]
 
 # Pratice problems
 - [[design bitly]]: url shortener
