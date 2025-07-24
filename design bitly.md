@@ -63,12 +63,11 @@ analytics cache (redis might be an overkill):
 - Redirect types (301 vs 302)
 - Asymmetric operation (more read vs write)
     - scaling primary server separating read and write ops. Scaling independently
-- HDD vs SSD vs Memcache speed difference
-    - https://gist.github.com/jboner/2841832
-    - Mem 1MB access = 0.25 ms 
-    - memory speed x4 = ssd
-    - ssd speed x20 = hdd
-    - RTT within same Datacenter = 0.5 ms
-- Ensuring unique url
+- SSD vs Memcache speed difference. Speedups with Redis cache k,v of shortend,orig
+    - Memory: Can support millions of reads per second
+    - SSD: ~100,000 IOPS (Input/Output Operations Per Second)
+- appx 100,000 seconds for 1 day
+- Ensuring unique url. Hash then b62 using INCR counter from Redis
+
 
 https://www.hellointerview.com/learn/system-design/problem-breakdowns/bitly

@@ -1,11 +1,12 @@
 # Kafka
 
 In a nutshell, a horizontally distributed queues with pubs/subs on either ends.
-Often used for non-functional requirements in [[Delivery framework]]
+Often used for non-functional requirements in [[Delivery framework]].
+"[[Batch write]]" is also a technique used along with Kafka in the worker/consumer side
 
 ## How it works
 - Each queue is called `partition` (and each partition can have replicas for backup). These are immutable sequence of appended messages
-- They are logically grouped by `topics`
+- They are logically grouped by `topics`. 50kb per topic
 - `Brokers` are servers that hold the partitions
 - Each `consumer group` contains machines that process/subscribe to a specific topic
 - Each consumer will read the message based on the latest offset, and once it's finished with its job, it'll commit the next offset.

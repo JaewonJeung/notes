@@ -4,6 +4,8 @@
 - serious crypto 
 - Bulletproof TLS
 
+[[post quantum crypto]]
+
 ## PQC
 ### G
 - 24/03/11 https://bughunters.google.com/blog/5108747984306176/google-s-threat-model-for-post-quantum-cryptography

@@ -65,7 +65,7 @@ Follow
 
 ## Things learned
 - Solving the problem of getting the feed of a user efficiently
-    - "Infinite scroll" with pagination
+    - "Infinite scroll" with pagination [[fb-live-comments]] explains it better
     - This is solved by keeping track of the timestamp of the oldest post the user has seen and have that as a cursor
     - When there's a GET request, build results using Follow and Post, cache like 500 of them into Redis
     - User sends the timestamp of the oldest post they've seen
