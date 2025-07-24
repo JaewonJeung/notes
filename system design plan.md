@@ -138,6 +138,11 @@ Monitoring
 # Object design
 https://python-patterns.guide
 
+# Design Pattern
+- [[Real-time updates]]
+- [[Dealing with contention]]
+- [[scaling reads]]
+
 # Pratice problems
 - [[design bitly]]: url shortener
 - [[design gopuff]]: location two-stage arch, CP, ACID DB speedups+reliability
