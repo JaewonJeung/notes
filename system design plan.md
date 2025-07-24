@@ -143,6 +143,8 @@ https://python-patterns.guide
 - [[Dealing with contention]]
 - [[scaling reads]]
 - [[scaling writes]]
+- [[Handling large blobs]]
+- [[Managing long running tasks]]
 
 # Pratice problems
 - [[design bitly]]: url shortener
