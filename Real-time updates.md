@@ -7,7 +7,7 @@
     - cons. HTTP overhead, not good for freq updates due to round trips
 - `SSE`
     - Instead of content-length, chunk. Basically turns HTTP into stream
-    - More efficient than above. Auto reconnection using "last event ID". Still simple to implement
+    - More efficient than above. Auto reconnection using "last event ID". Still relatively simple to implement with some careful infra support
     - One-way comm. Browsers limiting # of concurrent conn per domain
     - Need full path infra support. e.g. the proxy/LB can't do buffered send 
 - `WS`

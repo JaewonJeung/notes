@@ -2,7 +2,7 @@
 ## Vertical scaling
 - Initial choice
 
-## DB chocies
+## DB choices
 - Different types of DBs. 
 - Cassandra can be used for write heavy DB. read is lacking, though
 - Reducing index overhead can also help

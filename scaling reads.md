@@ -34,4 +34,4 @@
 - Useful for hot key problem. Spreading a single hot key across multiple cache entries
 
 ## CDN
-- Only makes sense for resuorces that are accessed by multiple users, not user-specific data
+- Only makes sense for resources that are accessed by multiple users, not user-specific data
